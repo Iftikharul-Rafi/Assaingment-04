@@ -99,3 +99,23 @@ const tabCount = document.getElementById("tabCount");
 const allBtn = document.getElementById("allBtn");
 const interviewBtn = document.getElementById("interviewBtn");
 const rejectedBtn = document.getElementById("rejectedBtn");
+
+
+// Render Jobs
+
+function renderJobs() {
+
+    container.innerHTML = "";
+
+    let filteredJobs = [];
+    
+    for (let i = 0; i < jobs.length; i++) {
+
+        if (currentTab === "all") {
+            filteredJobs.push(jobs[i]);
+        }
+        else if (jobs[i].status === currentTab) {
+            filteredJobs.push(jobs[i]);
+        }
+
+    }
