@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Tracker</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+  <div class="container">
+
+    <h1>Job Application Tracker</h1>
+
+    <div class="dashboard">
+      <div class="card">
+        <h4>Total</h4>
+        <p id="totalCount">8</p>
+      </div>
+      <div class="card">
+        <h4>Interview</h4>
+        <p id="interviewCount">0</p>
+      </div>
+      <div class="card">
+        <h4>Rejected</h4>
+        <p id="rejectedCount">0</p>
+      </div>
+    </div>
+
+    <div class="jobs-header">
+      <h2>Available Jobs</h2>
+      <span id="tabCount">8 jobs</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="allBtn">All</button>
+      <button class="tab" id="interviewBtn">Interview</button>
+      <button class="tab" id="rejectedBtn">Rejected</button>
+    </div>
+
+    <div id="jobContainer"></div>
+
+    <div id="emptyState" class="empty-state hidden">
+      <img src="image/jobs.png">
+      <h3>No jobs available</h3>
+      <p>Check back soon for new job opportunities</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
