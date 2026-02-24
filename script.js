@@ -170,3 +170,90 @@ ${statusHTML}
 </button>
 `;
 
+
+        div.querySelector(".interview-btn").onclick = function () {
+            job.status = "interview";
+            updateCounts();
+            renderJobs();
+        };
+
+        div.querySelector(".rejected-btn").onclick = function () {
+            job.status = "rejected";
+            updateCounts();
+            renderJobs();
+        };
+
+        div.querySelector(".delete-btn").onclick = function () {
+
+            for (let j = 0; j < jobs.length; j++) {
+                if (jobs[j].id === job.id) {
+                    jobs.splice(j, 1);
+                    break;
+                }
+            }
+
+            updateCounts();
+            renderJobs();
+        };
+
+        container.appendChild(div);
+
+    }
+
+}
+function updateCounts() {
+
+    let interview = 0;
+    let rejected = 0;
+
+    for (let i = 0; i < jobs.length; i++) {
+
+        if (jobs[i].status === "interview") {
+            interview++;
+        }
+        else if (jobs[i].status === "rejected") {
+            rejected++;
+        }
+
+    }
+
+    totalCount.innerText = jobs.length;
+    interviewCount.innerText = interview;
+    rejectedCount.innerText = rejected;
+
+}
+
+
+// Tab Buttons
+
+function removeActive() {
+    allBtn.classList.remove("active");
+    interviewBtn.classList.remove("active");
+    rejectedBtn.classList.remove("active");
+}
+
+allBtn.addEventListener("click", function () {
+    removeActive();
+    this.classList.add("active");
+    currentTab = "all";
+    renderJobs();
+});
+
+interviewBtn.addEventListener("click", function () {
+    removeActive();
+    this.classList.add("active");
+    currentTab = "interview";
+    renderJobs();
+});
+
+rejectedBtn.addEventListener("click", function () {
+    removeActive();
+    this.classList.add("active");
+    currentTab = "rejected";
+    renderJobs();
+});
+
+
+
+updateCounts();
+renderJobs();
