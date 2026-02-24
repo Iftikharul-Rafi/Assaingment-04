@@ -108,7 +108,7 @@ function renderJobs() {
     container.innerHTML = "";
 
     let filteredJobs = [];
-    
+
     for (let i = 0; i < jobs.length; i++) {
 
         if (currentTab === "all") {
@@ -119,3 +119,54 @@ function renderJobs() {
         }
 
     }
+
+    // tab count
+    if (currentTab === "all") {
+        tabCount.innerText = jobs.length + " jobs";
+    }
+    else {
+        tabCount.innerText = filteredJobs.length + " of " + jobs.length;
+    }
+
+    if (filteredJobs.length === 0) {
+        emptyState.classList.remove("hidden");
+    }
+    else {
+        emptyState.classList.add("hidden");
+    }
+
+    for (let i = 0; i < filteredJobs.length; i++) {
+
+        let job = filteredJobs[i];
+
+        const div = document.createElement("div");
+        div.className = "job-card";
+
+        let statusHTML = "";
+
+        if (job.status === "interview") {
+            statusHTML = `<div class="status interview">INTERVIEW</div>`;
+        }
+        else if (job.status === "rejected") {
+            statusHTML = `<div class="status rejected">REJECTED</div>`;
+        }
+
+        div.innerHTML = `
+<h3>${job.company}</h3>
+<div class="position">${job.position}</div>
+<div class="meta">${job.location} • ${job.type} • ${job.salary}</div>
+
+${statusHTML}
+
+<p class="description">${job.description}</p>
+
+<div class="buttons">
+<button class="action interview-btn">INTERVIEW</button>
+<button class="action rejected-btn">REJECTED</button>
+</div>
+
+<button class="action delete-btn">
+<i class="fa-solid fa-trash-can"></i>
+</button>
+`;
+
